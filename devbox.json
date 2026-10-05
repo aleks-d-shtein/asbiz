@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.2/.schema/devbox.schema.json",
+  "packages": [
+    "python@3.12",
+    "uv@latest"
+  ],
+  "env": {
+    "UV_PYTHON_PREFERENCE": "only-system"
+  },
+  "shell": {
+    "init_hook": [
+      ". \"$VENV_DIR/bin/activate\"",
+      "uv pip install -q -r requirements.txt"
+    ],
+    "scripts": {
+      "test": "python -m pytest tests",
+      "bench": "python -m desk.bench \"$@\""
+    }
+  }
+}
